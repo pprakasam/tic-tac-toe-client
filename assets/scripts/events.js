@@ -68,7 +68,7 @@ const startGame = function (divid) {
   // switch player
 
   player === 'X' ? gameGrid[divid[3]] = 'X' : gameGrid[divid[3]] = 'O'
-  $($target).text(player)
+  $($target).text(player).css('font-size', '25px')
   checkForWin(player)
   apiIndex = divid[3]
   apiValue = gameGrid[divid[3]]
