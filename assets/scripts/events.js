@@ -19,7 +19,7 @@ const onSignUp = (event) => {
 
   api.signUp(formData)
     .then(ui.signUpSuccess)
-    .catch(ui.failure)
+    .catch(ui.authFailure)
 }
 //
 const onSignIn = (event) => {
@@ -29,14 +29,15 @@ const onSignIn = (event) => {
   console.log(formData)
   api.signIn(formData)
     .then(ui.signInSuccess)
-    .catch(ui.failure)
+    .catch(ui.authFailure)
 }
 
 const onSignOut = (event) => {
   event.preventDefault()
+  resetGame()
   api.signOut()
     .then(ui.signOutSuccess)
-    .catch(ui.failure)
+    .catch(ui.authFailure)
 }
 
 const onChangePassword = (event) => {
@@ -157,14 +158,14 @@ const onNewGame = () => {
   resetFlag = false
   const form = event.target
   const formData = getFormFields(form)
-  api.onNewGame(formData)
-    .then(ui.onNewGame)
-    .catch(ui.failure)
   api.onGetGameInfo()
     .then(ui.getGameInfoSuccess)
     .catch(ui.failure)
   api.onGetTrueGameInfo()
     .then(ui.getTrueGameInfoSuccess)
+    .catch(ui.failure)
+  api.onNewGame(formData)
+    .then(ui.onNewGame)
     .catch(ui.failure)
 }
 
