@@ -44,12 +44,12 @@ const onNewGame = (responseData) => {
     $('.display-message').text('')
   }, 2000)
   store.game = responseData.game
-  console.log('responseData', store.game.id, store.game.cell)
+  // console.log('responseData', store.game.id, store.game.cell)
 }
 
 const onUpdateGameSuccess = (responseData) => {
   store.game = responseData.game
-  console.log('responseData', store.game)
+  // console.log('responseData', store.game)
 }
 
 const changePasswordSuccess = () => {
@@ -62,7 +62,7 @@ const changePasswordSuccess = () => {
 
 const getGameInfoSuccess = (responseData) => {
   // store.game = responseData.game
-  console.log(responseData.games.length)
+  // console.log(responseData.games.length)
   $('.games-played').text('Total Games: ' + responseData.games.length)
 }
 

@@ -158,14 +158,17 @@ const onNewGame = () => {
   resetFlag = false
   const form = event.target
   const formData = getFormFields(form)
+  api.onNewGame(formData)
+    .then(ui.onNewGame)
+    .catch(ui.failure)
+}
+
+const apiGameDisplay = () => {
   api.onGetGameInfo()
     .then(ui.getGameInfoSuccess)
     .catch(ui.failure)
   api.onGetTrueGameInfo()
     .then(ui.getTrueGameInfoSuccess)
-    .catch(ui.failure)
-  api.onNewGame(formData)
-    .then(ui.onNewGame)
     .catch(ui.failure)
 }
 
@@ -176,5 +179,6 @@ module.exports = {
   onSignIn,
   onNewGame,
   onSignOut,
-  onChangePassword
+  onChangePassword,
+  apiGameDisplay
 }

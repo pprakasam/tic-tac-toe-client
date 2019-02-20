@@ -17,4 +17,5 @@ $(() => {
     events.startGame(this.id)
   })
   $('.reset-button').submit(events.resetGame)
+  $('.dropdown-toggle').on('click', events.apiGameDisplay)
 })
