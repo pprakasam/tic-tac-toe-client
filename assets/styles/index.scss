@@ -1,29 +1,54 @@
 @import '~bootstrap/scss/bootstrap';
 
 h1 {
-  padding: 25px;
+  padding: 2%;
   text-align: center;
 }
 
-table {
-  border: 5px solid rgb(0, 0, 0);
-  left: 500px;
-  position: relative;
-  top: 40px;
+$alt-color: $cyan;
+$body-bg-color: $gray-200;
+$font-color: $light;
+
+body {
+  background-color: $body-bg-color;
 }
 
-
-td {
-  border: 3px solid rgb(0, 0, 0);
+.box {
+  align-items: center;
+  background-color: $secondary;
+  border: 1px solid $white;
+  color: $font-color;
+  display: flex;
   height: 150px;
-  width: 150px;
+  justify-content: center;
 }
 
-.player-status {
+.container {
+  height: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.alt-color {
+  background-color: $alt-color;
+}
+
+.display-message {
+  height: 20px;
+  margin: 15px;
   text-align: center;
 }
 
-.reset-game {
-  padding: 70px 0;
+.game-board {
+  display: none;
+}
+
+.form-group  {
+  margin: 2% 25%;
+  width: 40%;
+}
+
+p {
   text-align: center;
 }

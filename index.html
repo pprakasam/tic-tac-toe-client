@@ -14,34 +14,102 @@
 </head>
 
 <body>
-  <div class="game-page">
-  <h1>TIC TAC TOE</h1>
-  <div class="player-status"></div>
-  <div class="grid-layout">
-    <table>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-  </div>
-  <div class="reset-game">
-    <form class="reset-button">
-    <input type=submit value="RESET">
+
+ <div class="forms">
+   <h1>TIC TAC TOE</h1>
+  <form class="sign-up">
+    <div class="form-group">
+      <label for="signupEmail">Email address</label>
+      <input type="email" name="credentials[email]" class="form-control" id="signupEmail" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="password1">Password</label>
+      <input type="password" name="credentials[password]" class="form-control" id="password1" placeholder="Password">
+    </div>
+    <div class="form-group">
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" name="credentials[password_confirmation]" class="form-control" id="confirm-password"
+      placeholder="Cofirm Password">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </div>
+</form>
+
+<p class="user-message"></p>
+<p class="old-user">Already a User? Sign In here</p>
+
+<form class="sign-in">
+<div class="form-group">
+    <label for="signinEmail">Email address</label>
+    <input type="email" name="credentials[email]" class="form-control" id="signinEmail" placeholder="Enter email">
+</div>
+<div class="form-group">
+    <label for="password2">Password</label>
+    <input type="password" name="credentials[password]" class="form-control" id="password2" placeholder="Password">
+</div>
+<div class="form-group">
+    <button type="submit" class="btn btn-primary">Sign In</button>
+</div>
+</form>
+</div>
+
+<div class="game-board">
+
+  <nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-around">
+   <h3 class="user"></h3>
+   <form class="form-inline change-password">
+    <input class="form-control mr-sm-2" type="password" placeholder="Old Password"
+           name="passwords[old]">
+    <input class="form-control mr-sm-2" type="password" placeholder="New Password"
+           name="passwords[new]">
+    <button class="btn btn-sm btn-outline-success my-2 my-sm-0" type="submit">Change Password</button>
   </form>
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">Game Info</a>
+      <div class="dropdown-menu">
+      <a class="dropdown-item games-played" href="#">Games Played</a>
+      <a class="dropdown-item games-won" href="#">Games Won</a>
+    </div>
+  </li>
+</ul>
+
+   <form class="form-inline my-2 my-lg-0 sign-out">
+    <button class="btn btn-sm btn-outline-success my-2 my-sm-0 mr-2" type="submit">Sign Out</button>
+   </form>
+ </nav>
+
+<div class="display-message"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-4 box alt-color" id="div0"></div>
+    <div class="col-4 box alt-color" id="div1"></div>
+    <div class="col-4 box alt-color" id="div2"></div>
+  </div>
+  <div class="row">
+    <div class="col-4 box alt-color" id="div3"></div>
+    <div class="col-4 box alt-color" id="div4"></div>
+    <div class="col-4 box alt-color" id="div5"></div>
+  </div>
+  <div class="row">
+    <div class="col-4 box alt-color" id="div6"></div>
+    <div class="col-4 box alt-color" id="div7"></div>
+    <div class="col-4 box alt-color" id="div8"></div>
   </div>
 </div>
-</body>
 
+<nav class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light justify-content-center">
+<form class="form-inline my-2 my-lg-0 reset-button">
+  <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">RESET</button>
+</form>
+<form class="form-inline my-2 my-lg-0 start-button">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">START</button>
+</form>
+</nav>
+</div>
+
+</body>
 </html>
