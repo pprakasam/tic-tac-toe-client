@@ -8,6 +8,14 @@ const signUpSuccess = () => {
   }, 3000)
 }
 
+const authFailure = () => {
+  $('form').trigger('reset')
+  $('.user-message').text('Error. Something went wrong!!')
+  setTimeout(() => {
+    $('.user-message').text('')
+  }, 3000)
+}
+
 const failure = () => {
   $('form').trigger('reset')
   $('.display-message').text('Error. Something went wrong!!')
@@ -26,14 +34,17 @@ const signOutSuccess = (responseData) => {
   store.user = null
   $('.forms').css('display', 'block')
   $('.game-board').css('display', 'none')
-  $('.games-played').text('Games played: ' + 0)
-  $('.games-won').text('Games Won: ' + 0)
+  $('.games-played').text('Total Games: ' + '')
+  $('.games-won').text('Games Won: ' + '')
 }
 
 const onNewGame = (responseData) => {
-  $('.player-status').text('Start Playing')
+  $('.display-message').text('Start Playing')
+  setTimeout(() => {
+    $('.display-message').text('')
+  }, 2000)
   store.game = responseData.game
-  // console.log('responseData', store.game.id, store.game.cells)
+  // console.log('responseData', store.game.id, store.game.cell)
 }
 
 const onUpdateGameSuccess = (responseData) => {
@@ -51,8 +62,8 @@ const changePasswordSuccess = () => {
 
 const getGameInfoSuccess = (responseData) => {
   // store.game = responseData.game
-  // console.log(responseData)
-  $('.games-played').text('Games played: ' + responseData.games.length)
+  // console.log(responseData.games.length)
+  $('.games-played').text('Total Games: ' + responseData.games.length)
 }
 
 const getTrueGameInfoSuccess = (responseData) => {
@@ -63,6 +74,7 @@ const getTrueGameInfoSuccess = (responseData) => {
 
 module.exports = {
   signUpSuccess,
+  authFailure,
   failure,
   signInSuccess,
   onNewGame,

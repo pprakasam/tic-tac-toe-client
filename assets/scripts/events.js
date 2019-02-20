@@ -19,7 +19,7 @@ const onSignUp = (event) => {
 
   api.signUp(formData)
     .then(ui.signUpSuccess)
-    .catch(ui.failure)
+    .catch(ui.authFailure)
 }
 //
 const onSignIn = (event) => {
@@ -29,14 +29,15 @@ const onSignIn = (event) => {
   console.log(formData)
   api.signIn(formData)
     .then(ui.signInSuccess)
-    .catch(ui.failure)
+    .catch(ui.authFailure)
 }
 
 const onSignOut = (event) => {
   event.preventDefault()
+  resetGame()
   api.signOut()
     .then(ui.signOutSuccess)
-    .catch(ui.failure)
+    .catch(ui.authFailure)
 }
 
 const onChangePassword = (event) => {
@@ -67,7 +68,7 @@ const startGame = function (divid) {
   // switch player
 
   player === 'X' ? gameGrid[divid[3]] = 'X' : gameGrid[divid[3]] = 'O'
-  $($target).text(player)
+  $($target).text(player).css('font-size', '25px')
   checkForWin(player)
   apiIndex = divid[3]
   apiValue = gameGrid[divid[3]]
@@ -160,6 +161,9 @@ const onNewGame = () => {
   api.onNewGame(formData)
     .then(ui.onNewGame)
     .catch(ui.failure)
+}
+
+const apiGameDisplay = () => {
   api.onGetGameInfo()
     .then(ui.getGameInfoSuccess)
     .catch(ui.failure)
@@ -175,5 +179,6 @@ module.exports = {
   onSignIn,
   onNewGame,
   onSignOut,
-  onChangePassword
+  onChangePassword,
+  apiGameDisplay
 }
