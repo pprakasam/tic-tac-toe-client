@@ -4,6 +4,8 @@ const ui = require('./ui.js')
 
 let player = 'X'
 let gameGrid = ['', '', '', '', '', '', '', '', '']
+let cellsOccupied = []
+let validMove = false
 let winnerFlag = false
 let resetFlag = false
 let newGame = false
@@ -67,17 +69,23 @@ const startGame = function (divid) {
   // Update each move to API as well
   // switch player
 
-  player === 'X' ? gameGrid[divid[3]] = 'X' : gameGrid[divid[3]] = 'O'
-  $($target).text(player).css('font-size', '25px')
-  checkForWin(player)
-  apiIndex = divid[3]
-  apiValue = gameGrid[divid[3]]
-  api.updateGame(apiIndex, apiValue, apiOver)
-    .then(ui.onUpdateGameSuccess)
-    .catch(ui.failure)
-  player === 'X' ? player = 'O' : player = 'X'
-  if (!winnerFlag && !tie) {
-    $('.display-message').text('Your turn now ' + player)
+  validMove = checkForValidMove(divid[3])
+  if (validMove === false) {
+    player === 'X' ? gameGrid[divid[3]] = 'X' : gameGrid[divid[3]] = 'O'
+    cellsOccupied.push(divid[3])
+    $($target).text(player).css('font-size', '25px')
+    checkForWin(player)
+    apiIndex = divid[3]
+    apiValue = gameGrid[divid[3]]
+    api.updateGame(apiIndex, apiValue, apiOver)
+      .then(ui.onUpdateGameSuccess)
+      .catch(ui.failure)
+    player === 'X' ? player = 'O' : player = 'X'
+    if (!winnerFlag && !tie) {
+      $('.display-message').text('Your turn now ' + player)
+    }
+  } else {
+    $('.display-message').text('Pick a different cell')
   }
 }
 
@@ -127,6 +135,9 @@ const checkForWin = function (player) {
   }
 }
 
+const checkForValidMove = function (move) {
+  return cellsOccupied.includes(move)
+}
 // Display the winner
 
 const displayWinner = function (winner) {
@@ -141,6 +152,7 @@ const resetGame = function () {
   event.preventDefault()
   player = 'X'
   gameGrid = ['', '', '', '', '', '', '', '', '']
+  cellsOccupied = []
   winnerFlag = false
   apiOver = false
   resetFlag = true
