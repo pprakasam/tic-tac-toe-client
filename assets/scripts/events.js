@@ -23,12 +23,12 @@ const onSignUp = (event) => {
     .then(ui.signUpSuccess)
     .catch(ui.authFailure)
 }
-//
+
 const onSignIn = (event) => {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
-  console.log(formData)
+  // console.log(formData)
   api.signIn(formData)
     .then(ui.signInSuccess)
     .catch(ui.authFailure)
@@ -46,7 +46,7 @@ const onChangePassword = (event) => {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
-  console.log(formData)
+  // console.log(formData)
   api.changePassword(formData)
     .then(ui.changePasswordSuccess)
     .catch(ui.failure)
@@ -61,7 +61,7 @@ const startGame = function (divid) {
   // play again
 
   if (winnerFlag || resetFlag || !newGame || tie) {
-    $('.display-message').text('Press Start Game to Play')
+    $('.display-message').text('Press START to Play')
     return
   }
   // for each move update the gameGrid with the move and display on the screen

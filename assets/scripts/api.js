@@ -58,7 +58,7 @@ const updateGame = (apiIndex, apiValue, apiOver) => {
 }
 
 const changePassword = (formData) => {
-  console.log('change passowrd', formData)
+  // console.log('change passowrd', formData)
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',

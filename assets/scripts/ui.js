@@ -19,6 +19,9 @@ const authFailure = () => {
 const failure = () => {
   $('form').trigger('reset')
   $('.display-message').text('Error. Something went wrong!!')
+  setTimeout(() => {
+    $('.user-message').text('')
+  }, 3000)
 }
 
 const signInSuccess = (responseData) => {
